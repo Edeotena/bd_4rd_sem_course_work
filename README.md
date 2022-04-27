@@ -3,5 +3,5 @@
 ---
 ER-диаграмма реализуемой базы данных:
 ![alt image](pictures/ER.png)
-<img src="pictures/ER.jpg">
-<img src="pictures/ER.png">
+<img data-src="pictures/ER.jpg" class="lazyload" />
+<img data-src="pictures/ER.png" class="lazyload" />
