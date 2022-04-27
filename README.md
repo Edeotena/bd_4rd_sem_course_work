@@ -2,6 +2,4 @@
 > Тема БД курсовой работы: "Железная дорога"
 ---
 ER-диаграмма реализуемой базы данных:
-![alt image](pictures/ER.png)
-<img src="pictures/ER.jpg" class="lazyload" data-sizes="auto">
-<img src="pictures/ER.png" class="lazyload" data-sizes="auto">
+![ER image](https://github.com/Edeotena/bd_4rd_sem_course_work/blob/main/pictures/ER.png)
