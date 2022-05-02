@@ -1,0 +1,5 @@
+C:/Users/timva/bd_4rd_sem_course_work/src/build-project-Desktop_Qt_6_3_0_MinGW_64_bit-Debug/CMakeFiles/project.dir
+C:/Users/timva/bd_4rd_sem_course_work/src/build-project-Desktop_Qt_6_3_0_MinGW_64_bit-Debug/CMakeFiles/edit_cache.dir
+C:/Users/timva/bd_4rd_sem_course_work/src/build-project-Desktop_Qt_6_3_0_MinGW_64_bit-Debug/CMakeFiles/rebuild_cache.dir
+C:/Users/timva/bd_4rd_sem_course_work/src/build-project-Desktop_Qt_6_3_0_MinGW_64_bit-Debug/CMakeFiles/project_autogen_timestamp_deps.dir
+C:/Users/timva/bd_4rd_sem_course_work/src/build-project-Desktop_Qt_6_3_0_MinGW_64_bit-Debug/CMakeFiles/project_autogen.dir
