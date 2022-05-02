@@ -17,12 +17,20 @@
 			"_qt_internal_create_executable",
 			"qt6_add_executable",
 			"qt_add_executable",
-			"target_link_libraries"
+			"target_link_libraries",
+			"add_dependencies",
+			"_qt_internal_scan_qml_imports",
+			"_qt_internal_generate_deploy_qml_imports_script",
+			"cmake_language",
+			"_qt_internal_finalize_executable",
+			"qt6_finalize_target",
+			"qt_finalize_executable"
 		],
 		"files" : 
 		[
 			"C:/Qt/6.3.0/mingw_64/lib/cmake/Qt6Core/Qt6CoreMacros.cmake",
-			"CMakeLists.txt"
+			"CMakeLists.txt",
+			"C:/Qt/6.3.0/mingw_64/lib/cmake/Qt6Qml/Qt6QmlMacros.cmake"
 		],
 		"nodes" : 
 		[
@@ -32,7 +40,7 @@
 			{
 				"command" : 3,
 				"file" : 1,
-				"line" : 25,
+				"line" : 26,
 				"parent" : 0
 			},
 			{
@@ -56,7 +64,7 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 47,
+				"line" : 48,
 				"parent" : 0
 			},
 			{
@@ -64,6 +72,48 @@
 				"file" : 0,
 				"line" : 524,
 				"parent" : 2
+			},
+			{
+				"command" : 11,
+				"file" : 1,
+				"line" : 59,
+				"parent" : 0
+			},
+			{
+				"command" : 10,
+				"file" : 0,
+				"line" : 955,
+				"parent" : 7
+			},
+			{
+				"command" : 9,
+				"file" : 0,
+				"line" : 679,
+				"parent" : 8
+			},
+			{
+				"command" : 8,
+				"file" : 0,
+				"line" : 615,
+				"parent" : 9
+			},
+			{
+				"command" : 7,
+				"file" : 0,
+				"line" : 615,
+				"parent" : 10
+			},
+			{
+				"command" : 6,
+				"file" : 2,
+				"line" : 2620,
+				"parent" : 11
+			},
+			{
+				"command" : 5,
+				"file" : 2,
+				"line" : 2473,
+				"parent" : 12
 			}
 		]
 	},
@@ -96,6 +146,34 @@
 				{
 					"backtrace" : 6,
 					"define" : "QT_NEEDS_QMAIN"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "QT_NETWORK_LIB"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "QT_OPENGL_LIB"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "QT_QMLINTEGRATION_LIB"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "QT_QMLMODELS_LIB"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "QT_QML_LIB"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "QT_QUICK_LIB"
+				},
+				{
+					"backtrace" : 5,
+					"define" : "QT_SQL_LIB"
 				},
 				{
 					"backtrace" : 5,
@@ -162,6 +240,41 @@
 					"backtrace" : 5,
 					"isSystem" : true,
 					"path" : "C:/Qt/6.3.0/mingw_64/include/QtGui"
+				},
+				{
+					"backtrace" : 5,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.3.0/mingw_64/include/QtQuick"
+				},
+				{
+					"backtrace" : 5,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.3.0/mingw_64/include/QtQml"
+				},
+				{
+					"backtrace" : 5,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.3.0/mingw_64/include/QtQmlIntegration"
+				},
+				{
+					"backtrace" : 5,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.3.0/mingw_64/include/QtNetwork"
+				},
+				{
+					"backtrace" : 5,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.3.0/mingw_64/include/QtQmlModels"
+				},
+				{
+					"backtrace" : 5,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.3.0/mingw_64/include/QtOpenGL"
+				},
+				{
+					"backtrace" : 5,
+					"isSystem" : true,
+					"path" : "C:/Qt/6.3.0/mingw_64/include/QtSql"
 				}
 			],
 			"language" : "CXX",
@@ -185,11 +298,15 @@
 	"dependencies" : 
 	[
 		{
-			"backtrace" : 0,
-			"id" : "project_autogen::@6890427a1f51a3e7e1df"
+			"id" : "project_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
 		},
 		{
-			"id" : "project_autogen_timestamp_deps::@6890427a1f51a3e7e1df"
+			"backtrace" : 13,
+			"id" : "project_qmlimportscan::@6890427a1f51a3e7e1df"
+		},
+		{
+			"backtrace" : 0,
+			"id" : "project_autogen::@6890427a1f51a3e7e1df"
 		}
 	],
 	"id" : "project::@6890427a1f51a3e7e1df",
@@ -211,7 +328,53 @@
 				"role" : "libraries"
 			},
 			{
+				"backtrace" : 5,
+				"fragment" : "C:\\Qt\\6.3.0\\mingw_64\\lib\\libQt6Quick.a",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 5,
+				"fragment" : "C:\\Qt\\6.3.0\\mingw_64\\lib\\libQt6Sql.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Qt\\6.3.0\\mingw_64\\lib\\libQt6QmlModels.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Qt\\6.3.0\\mingw_64\\lib\\libQt6Qml.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Qt\\6.3.0\\mingw_64\\lib\\libQt6Network.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-lws2_32",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "C:\\Qt\\6.3.0\\mingw_64\\lib\\libQt6OpenGL.a",
+				"role" : "libraries"
+			},
+			{
 				"fragment" : "C:\\Qt\\6.3.0\\mingw_64\\lib\\libQt6Gui.a",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-ld3d11",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-ldxgi",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-ldxguid",
+				"role" : "libraries"
+			},
+			{
+				"fragment" : "-luser32",
 				"role" : "libraries"
 			},
 			{
@@ -237,18 +400,6 @@
 			},
 			{
 				"fragment" : "-lshell32",
-				"role" : "libraries"
-			},
-			{
-				"fragment" : "-ld3d11",
-				"role" : "libraries"
-			},
-			{
-				"fragment" : "-ldxgi",
-				"role" : "libraries"
-			},
-			{
-				"fragment" : "-ldxguid",
 				"role" : "libraries"
 			},
 			{

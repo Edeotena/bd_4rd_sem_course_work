@@ -1,0 +1,8 @@
+-rootPath
+C:/Users/timva/bd_4rd_sem_course_work/src/project
+-cmake-output
+-output-file
+C:/Users/timva/bd_4rd_sem_course_work/src/build-project-Desktop_Qt_6_3_0_MinGW_64_bit-Debug/.qt_plugins/Qt6_QmlPlugins_Imports_project.cmake
+-importPath
+C:/Qt/6.3.0/mingw_64/./qml
+C:/Users/timva/bd_4rd_sem_course_work/src/build-project-Desktop_Qt_6_3_0_MinGW_64_bit-Debug

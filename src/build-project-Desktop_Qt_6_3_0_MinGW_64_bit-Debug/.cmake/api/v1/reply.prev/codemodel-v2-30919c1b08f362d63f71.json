@@ -17,7 +17,8 @@
 					[
 						0,
 						1,
-						2
+						2,
+						3
 					]
 				}
 			],
@@ -34,7 +35,8 @@
 					[
 						0,
 						1,
-						2
+						2,
+						3
 					]
 				}
 			],
@@ -43,14 +45,14 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "project::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-project-Debug-21de57f09a6469883a8e.json",
+					"jsonFile" : "target-project-Debug-577392a4cc971027edc0.json",
 					"name" : "project",
 					"projectIndex" : 0
 				},
 				{
 					"directoryIndex" : 0,
 					"id" : "project_autogen::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-project_autogen-Debug-bc1408d574558d166916.json",
+					"jsonFile" : "target-project_autogen-Debug-f6074af7260b762af329.json",
 					"name" : "project_autogen",
 					"projectIndex" : 0
 				},
@@ -59,6 +61,13 @@
 					"id" : "project_autogen_timestamp_deps::@6890427a1f51a3e7e1df",
 					"jsonFile" : "target-project_autogen_timestamp_deps-Debug-9e64f97d3a16caac4c19.json",
 					"name" : "project_autogen_timestamp_deps",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "project_qmlimportscan::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-project_qmlimportscan-Debug-147aaf7c37708029857d.json",
+					"name" : "project_qmlimportscan",
 					"projectIndex" : 0
 				}
 			]

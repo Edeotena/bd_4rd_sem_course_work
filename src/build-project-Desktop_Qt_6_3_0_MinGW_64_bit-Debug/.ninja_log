@@ -1,0 +1,20 @@
+# ninja log v5
+3429	3726	6732354128995829	project.exe	f70f9d0df7aa14a8
+1181	3367	6732354125409957	CMakeFiles/project.dir/main.cpp.obj	166e0291b3ed1320
+183	1176	6732354101888304	project_autogen/timestamp	36e83a66136498fb
+183	1176	6732354101888304	project_autogen/mocs_compilation.cpp	36e83a66136498fb
+1177	3346	6732354125300549	CMakeFiles/project.dir/project_autogen/mocs_compilation.cpp.obj	1b76661740ee140d
+183	1176	6732354101888304	C:/Users/timva/bd_4rd_sem_course_work/src/build-project-Desktop_Qt_6_3_0_MinGW_64_bit-Debug/project_autogen/timestamp	36e83a66136498fb
+183	1176	6732354101888304	C:/Users/timva/bd_4rd_sem_course_work/src/build-project-Desktop_Qt_6_3_0_MinGW_64_bit-Debug/project_autogen/mocs_compilation.cpp	36e83a66136498fb
+1184	3429	6732354126033944	CMakeFiles/project.dir/mainwindow.cpp.obj	b5e3028ead9a0bda
+16	626	6732355026573513	build.ninja	fea793e03cb75e96
+12	183	6732354093581372	.qt_plugins/Qt6_QmlPlugins_Imports_project.cmake	27e827b180d162f3
+12	183	6732354093581372	C:/Users/timva/bd_4rd_sem_course_work/src/build-project-Desktop_Qt_6_3_0_MinGW_64_bit-Debug/.qt_plugins/Qt6_QmlPlugins_Imports_project.cmake	27e827b180d162f3
+14	1179	6732355347214296	project_autogen/timestamp	36e83a66136498fb
+14	1179	6732355347214296	project_autogen/mocs_compilation.cpp	36e83a66136498fb
+14	1179	6732355347214296	C:/Users/timva/bd_4rd_sem_course_work/src/build-project-Desktop_Qt_6_3_0_MinGW_64_bit-Debug/project_autogen/timestamp	36e83a66136498fb
+14	1179	6732355347214296	C:/Users/timva/bd_4rd_sem_course_work/src/build-project-Desktop_Qt_6_3_0_MinGW_64_bit-Debug/project_autogen/mocs_compilation.cpp	36e83a66136498fb
+1184	3963	6732355376842803	CMakeFiles/project.dir/main.cpp.obj	5cb96ce9faf81b2d
+1180	4028	6732355377442519	CMakeFiles/project.dir/mainwindow.cpp.obj	f460e8b1d3b9edbb
+1189	4031	6732355377598761	CMakeFiles/project.dir/project_autogen/mocs_compilation.cpp.obj	d89a326c8bd827d2
+4032	4308	6732355380202747	project.exe	87a24f50690cd6a9
