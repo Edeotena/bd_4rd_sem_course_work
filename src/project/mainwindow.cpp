@@ -19,7 +19,7 @@ QSqlDatabase set_database() {
     database.setPort(5432);
     database.setDatabaseName("db");
     database.setUserName("postgres");
-    database.setPassword("?");
+    database.setPassword("kudasmotrish");
     return database;
 }
 
@@ -37,7 +37,7 @@ void MainWindow::on_pushButton_clicked()
         }
 
         table = new QSqlTableModel(this, db);
-        table->setTable("territory_data");
+        table->setTable("locomotive");
         table->select();
         ui->tableView->setModel(table);
         ui->tableView->resizeColumnsToContents();
