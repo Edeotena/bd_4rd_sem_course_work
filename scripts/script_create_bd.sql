@@ -23,14 +23,14 @@ CREATE TABLE IF NOT EXISTS locomotive (
 	id INTEGER PRIMARY KEY,
 	weight_limit INTEGER NOT NULL CHECK (weight_limit > 0),
 	type VARCHAR(100) NOT NULL,
-	maintenance_date TIMESTAMP NOT NULL
+	maintenance_date DATE NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS railway_carriage (
 	id INTEGER PRIMARY KEY,
 	weight_limit INTEGER NOT NULL CHECK (weight_limit > 0),
 	type VARCHAR(100) NOT NULL,
-	maintenance_date TIMESTAMP NOT NULL
+	maintenance_date DATE NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS composition_of_carriages (
@@ -67,15 +67,11 @@ CREATE TABLE IF NOT EXISTS cargo_order (
 	cargo_weight INTEGER NOT NULL CHECK (cargo_weight > 0),
 	cargo_name VARCHAR(50) NOT NULL,
 	cargo_description VARCHAR(200) NOT NULL,
-	order_date TIMESTAMP NOT NULL,
-	start_date TIMESTAMP NOT NULL,
-	end_date TIMESTAMP NOT NULL	
+	order_date TIMESTAMP NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS loading_brigade (
 	id INTEGER PRIMARY KEY,
 	cargo_order INTEGER REFERENCES cargo_order(id) ON DELETE CASCADE,
-	worker INTEGER REFERENCES worker(id) ON DELETE CASCADE,
-	start_time TIMESTAMP NOT NULL,
-	end_time TIMESTAMP NOT NULL
+	worker INTEGER REFERENCES worker(id) ON DELETE CASCADE
 );
