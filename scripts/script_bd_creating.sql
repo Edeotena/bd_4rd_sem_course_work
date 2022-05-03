@@ -48,9 +48,10 @@ CREATE TABLE IF NOT EXISTS position (
 
 CREATE TABLE IF NOT EXISTS worker (
 	id INTEGER PRIMARY KEY,
-	position INTEGER REFERENCES position(id) ON DELETE CASCADE,
 	full_name VARCHAR(100) NOT NULL,
+	position VARCHAR(100) NOT NULL,
 	passport VARCHAR(100) NOT NULL,
+	salary INTEGER NOT NULL CHECK (salary > 0),
 	work_experience DATE NOT NULL
 );
 
