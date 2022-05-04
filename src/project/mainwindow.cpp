@@ -13,11 +13,11 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-QSqlDatabase set_database() {
+QSqlDatabase get_db() {
     QSqlDatabase database = QSqlDatabase::addDatabase("QPSQL");
     database.setHostName("localhost");
     database.setPort(5432);
-    database.setDatabaseName("db");
+    database.setDatabaseName("db_curs");
     database.setUserName("postgres");
     database.setPassword("kudasmotrish");
     return database;
@@ -26,26 +26,15 @@ QSqlDatabase set_database() {
 
 void MainWindow::on_pushButton_clicked()
 {
-    QSqlDatabase db = set_database();
-        if (db.open()) {
-            ui->textBrowser->append("DB successfully opened!\n");
-            for (const auto& i : db.tables()) {
-                ui->textBrowser->append(i);
-            }
-        } else {
-            ui->textBrowser->append("все плохо");
-        }
-
-        table = new QSqlTableModel(this, db);
-        table->setTable("locomotive");
-        table->select();
-        ui->tableView->setModel(table);
-        ui->tableView->resizeColumnsToContents();
-        ui->tableView->resizeRowsToContents();
-        //ui->tableView->resize(QSize(ui->tableView->horizontalHeader()->geometry()))
-
-        db.close();
-        ui->textBrowser->append("\nDB successfully closed!");
-
+    QSqlDatabase db = get_db();
+    db.open();
+    table = new QSqlTableModel(this, db);
+    table->setTable("cargo_order");
+    table->select();
+    ui->tableView->setModel(table);
+    ui->tableView->resizeColumnsToContents();
+    ui->tableView->resizeRowsToContents();
+    ui->tableView->setShowGrid(false);
+    db.close();
 }
 
