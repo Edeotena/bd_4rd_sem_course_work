@@ -24,8 +24,6 @@ private slots:
 private:
     Ui::MainWindow *ui;
     QSqlDatabase database;
-    QSqlQuery* query;
-    QSqlTableModel* table;
 
 };
 #endif // MAINWINDOW_H
