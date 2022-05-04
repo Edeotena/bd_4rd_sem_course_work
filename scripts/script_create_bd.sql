@@ -39,13 +39,6 @@ CREATE TABLE IF NOT EXISTS composition_of_carriages (
 	railway_carriage INTEGER REFERENCES railway_carriage(id) ON DELETE CASCADE
 );
 
-CREATE TABLE IF NOT EXISTS position (
-	id INTEGER PRIMARY KEY,
-	title VARCHAR(100) NOT NULL,
-	salary INTEGER NOT NULL CHECK (salary > 0),
-	responsibilities VARCHAR(200) NOT NULL
-);
-
 CREATE TABLE IF NOT EXISTS worker (
 	id INTEGER PRIMARY KEY,
 	full_name VARCHAR(100) NOT NULL,
