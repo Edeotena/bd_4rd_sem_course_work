@@ -34,24 +34,30 @@ void MainWindow::on_pushButton_clicked()
         QMessageBox::warning(this, "Ошибка!", "Не удалось открыть базу данных!");
     } else {
         QSqlQuery query;
-        query.prepare("SELECT id from qt_user WHERE login = '" + login + "' AND password = '" + pass + "'");
+        query.prepare("SELECT id, access FROM qt_user WHERE login = '" + login + "' AND password = '" + pass + "'");
         if (query.exec()) {
            if (query.size() > 0) {
-              int id = query.value(0).toInt();
-              qDebug() << id << " авторизовался.";
+              if (query.value(1).toString() == "yes") {
+                  int id = query.value(0).toInt();
+                  qDebug() << id << " авторизовался.";
+              } else {
+                  qDebug() << "Пользователь еще не принят.";
+                  QMessageBox::warning(this, "Ошибка!", "Вы еще не получили доступ к системе!");
+                  ui->login->clear();
+                  ui->pass->clear();
+              }
            } else {
-                qDebug() << "Ошибка авторизации.";
+                qDebug() << "Пользователь не найден.";
                 QMessageBox::warning(this, "Ошибка!", "Неправильный логин или пароль!");
                 ui->login->clear();
-                ui->login->clear();
+                ui->pass->clear();
            }
         } else {
             qDebug() << "Ошибка выполнения запроса.";
             QMessageBox::warning(this, "Ошибка!", "Сервер не смог выполнить поиск!");
             ui->login->clear();
-            ui->login->clear();
+            ui->pass->clear();
         }
     }
     db.close();
 }
-
