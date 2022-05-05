@@ -23,41 +23,48 @@ void MainWindow::on_pushButton_clicked()
     QSqlDatabase db = MainWindow::get_db();
     ui->login->clear();
     ui->pass->clear();
+
     if (!db.open()) {
         QMessageBox::warning(this, "Ошибка!", "Не удалось открыть базу данных!");
-    } else {
-        QSqlQuery query;
-        query.prepare("SELECT id_worker, access FROM qt_user WHERE login = '" + login + "' AND password = '" + pass + "'");
-        if (query.exec()) {
-           if (query.size() > 0) {
-              query.first();
-              if (query.value(1).toString() == "yes") {
-                  user_id = query.value(0).toInt();
-                  qDebug() << user_id << " авторизовался.";
-                  //Здесь произошла авторизация
-                  query.prepare("SELECT position FROM worker WHERE id = " + QString::number(user_id));
-                  if (!query.exec()) {
-                      qDebug() << "Ошибка выполнения запроса.";
-                      QMessageBox::warning(this, "Ошибка!", "Сервер не смог выполнить поиск!");
-                      return;
-                  }
-                  query.first();
-                  QString position = query.value(0).toString();
-                  qDebug() << position;
-                  this->close();
-              } else {
-                  qDebug() << "Пользователь еще не принят.";
-                  QMessageBox::warning(this, "Ошибка!", "Вы еще не получили доступ к системе!");
-              }
-           } else {
-                qDebug() << "Пользователь не найден.";
-                QMessageBox::warning(this, "Ошибка!", "Неправильный логин или пароль!");
-           }
-        } else {
-            qDebug() << "Ошибка выполнения запроса.";
-            QMessageBox::warning(this, "Ошибка!", "Сервер не смог выполнить поиск!");
-        }
+        return;
     }
+
+    QSqlQuery query;
+    query.prepare("SELECT id_worker, access FROM qt_user WHERE login = '" + login + "' AND password = '" + pass + "'");
+    if (!query.exec()) {
+        qDebug() << "Ошибка выполнения запроса.";
+        QMessageBox::warning(this, "Ошибка!", "Сервер не смог выполнить поиск!");
+        return;
+    }
+
+    if (query.size() == 0) {
+        qDebug() << "Пользователь не найден.";
+        QMessageBox::warning(this, "Ошибка!", "Неправильный логин или пароль!");
+        return;
+    }
+
+    query.first();
+    if (query.value(1).toString() != "yes") {
+        qDebug() << "Пользователь еще не принят.";
+        QMessageBox::warning(this, "Ошибка!", "Вы еще не получили доступ к системе!");
+        return;
+    }
+
+    user_id = query.value(0).toInt();
+    qDebug() << user_id << " авторизовался.";
+    //Здесь произошла авторизация
+
+    query.prepare("SELECT position FROM worker WHERE id = " + QString::number(user_id));
+    if (!query.exec()) {
+        qDebug() << "Ошибка выполнения запроса.";
+        QMessageBox::warning(this, "Ошибка!", "Сервер не смог выполнить поиск!");
+        return;
+    }
+
+    query.first();
+    QString position = query.value(0).toString();
+    qDebug() << position;
+    this->close();
     db.close();
 }
 
