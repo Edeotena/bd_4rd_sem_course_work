@@ -23,8 +23,10 @@ void createUser::on_pushButton_clicked()
     ui->login->clear();
     ui->pass->clear();
     ui->id->clear();
-    if (login == "" || pass == "") {
-        QMessageBox::warning(this, "Ошибка!", "Пароль и логин не могут быть пустыми!");
+    bool ok_id;
+    id.toInt(&ok_id);
+    if (login == "" || pass == "" || id == "" || !ok_id) {
+        QMessageBox::warning(this, "Ошибка!", "Пароль, логин и id не должны быть пустыми!\n id должен быть натуральным числом!");
         return;
     }
     QSqlDatabase db = createUser::get_db();
@@ -57,4 +59,11 @@ void createUser::on_pushButton_clicked()
     db.close();
 }
 
+
+
+void createUser::on_pushButton_2_clicked()
+{
+    this->close();
+    emit loginWindow();
+}
 

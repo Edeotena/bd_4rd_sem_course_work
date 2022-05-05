@@ -19,7 +19,7 @@
      <x>40</x>
      <y>40</y>
      <width>463</width>
-     <height>229</height>
+     <height>221</height>
     </rect>
    </property>
    <property name="title">
@@ -76,6 +76,13 @@
      <widget class="QPushButton" name="pushButton">
       <property name="text">
        <string>Создать</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QPushButton" name="pushButton_2">
+      <property name="text">
+       <string>Вернуться</string>
       </property>
      </widget>
     </item>
