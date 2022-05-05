@@ -20,10 +20,14 @@ void createUser::on_pushButton_clicked()
     QString login = ui->login->text();
     QString pass = ui->pass->text();
     QString id = ui->id->text();
-    QSqlDatabase db = createUser::get_db();
     ui->login->clear();
     ui->pass->clear();
     ui->id->clear();
+    if (login == "" || pass == "") {
+        QMessageBox::warning(this, "Ошибка!", "Пароль и логин не могут быть пустыми!");
+        return;
+    }
+    QSqlDatabase db = createUser::get_db();
     if (!db.open()) {
         QMessageBox::warning(this, "Ошибка!", "Не удалось открыть базу данных!");
     } else {
@@ -35,7 +39,6 @@ void createUser::on_pushButton_clicked()
               query.first();
               max = query.value(0).toInt() + 1;
            }
-           qDebug() << "INSERT INTO qt_user (id, id_worker, access, login, password) VALUES (" + QString::number(max) + ", " + id + ", 'no', '" + login + "', '" + pass + "')";
            query.prepare("INSERT INTO qt_user (id, id_worker, access, login, password) VALUES (" + QString::number(max) + ", " + id + ", 'no', '" + login + "', '" + pass + "')");
            if (query.exec()) {
                qDebug() << "Запись добавлена.";

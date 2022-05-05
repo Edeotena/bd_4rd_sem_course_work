@@ -30,6 +30,7 @@ void MainWindow::on_pushButton_clicked()
         query.prepare("SELECT id, access FROM qt_user WHERE login = '" + login + "' AND password = '" + pass + "'");
         if (query.exec()) {
            if (query.size() > 0) {
+              query.first();
               if (query.value(1).toString() == "yes") {
                   int id = query.value(0).toInt();
                   qDebug() << id << " авторизовался.";
