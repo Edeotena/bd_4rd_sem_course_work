@@ -1,32 +1,31 @@
-#ifndef MAINWINDOW_H
-#define MAINWINDOW_H
+#ifndef CREATEUSER_H
+#define CREATEUSER_H
 
-#include <QMainWindow>
+#include <QDialog>
 #include <QSqlDatabase>
 #include <QSqlTableModel>
 #include <QSqlQuery>
-#include <createuser.h>
 
-QT_BEGIN_NAMESPACE
-namespace Ui { class MainWindow; }
-QT_END_NAMESPACE
+namespace Ui {
+class createUser;
+}
 
-class MainWindow : public QMainWindow
+class createUser : public QDialog
 {
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    explicit createUser(QWidget *parent = nullptr);
+    ~createUser();
+
+signals:
+    void loginWindow();
 
 private slots:
     void on_pushButton_clicked();
 
-    void on_pushButton_2_clicked();
-
 private:
-    Ui::MainWindow *ui;
-    createUser *windowUserCreate;
+    Ui::createUser *ui;
 
 private:
     QSqlDatabase get_db() {
@@ -38,6 +37,6 @@ private:
         database.setPassword("kudasmotrish");
         return database;
     }
-
 };
-#endif // MAINWINDOW_H
+
+#endif // CREATEUSER_H

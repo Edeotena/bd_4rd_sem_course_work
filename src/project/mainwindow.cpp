@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    windowUserCreate = new createUser;
+    connect(windowUserCreate, &createUser::loginWindow, this, &MainWindow::show);
 }
 
 MainWindow::~MainWindow()
@@ -14,22 +16,13 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-QSqlDatabase get_db() {
-    QSqlDatabase database = QSqlDatabase::addDatabase("QPSQL");
-    database.setHostName("localhost");
-    database.setPort(5432);
-    database.setDatabaseName("db_curs");
-    database.setUserName("postgres");
-    database.setPassword("kudasmotrish");
-    return database;
-}
-
-
 void MainWindow::on_pushButton_clicked()
 {
     QString login = ui->login->text();
     QString pass = ui->pass->text();
-    QSqlDatabase db = get_db();
+    QSqlDatabase db = MainWindow::get_db();
+    ui->login->clear();
+    ui->pass->clear();
     if (!db.open()) {
         QMessageBox::warning(this, "Ошибка!", "Не удалось открыть базу данных!");
     } else {
@@ -43,21 +36,24 @@ void MainWindow::on_pushButton_clicked()
               } else {
                   qDebug() << "Пользователь еще не принят.";
                   QMessageBox::warning(this, "Ошибка!", "Вы еще не получили доступ к системе!");
-                  ui->login->clear();
-                  ui->pass->clear();
               }
            } else {
                 qDebug() << "Пользователь не найден.";
                 QMessageBox::warning(this, "Ошибка!", "Неправильный логин или пароль!");
-                ui->login->clear();
-                ui->pass->clear();
            }
         } else {
             qDebug() << "Ошибка выполнения запроса.";
             QMessageBox::warning(this, "Ошибка!", "Сервер не смог выполнить поиск!");
-            ui->login->clear();
-            ui->pass->clear();
         }
     }
     db.close();
 }
+
+void MainWindow::on_pushButton_2_clicked()
+{
+    ui->login->clear();
+    ui->pass->clear();
+    windowUserCreate->show();
+    this->close();
+}
+
