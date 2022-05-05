@@ -27,6 +27,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     createUser *windowUserCreate;
+    int user_id;
 
 private:
     QSqlDatabase get_db() {
