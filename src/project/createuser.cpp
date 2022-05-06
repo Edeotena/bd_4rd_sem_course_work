@@ -8,6 +8,7 @@ createUser::createUser(QWidget *parent) :
     ui(new Ui::createUser)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Registration");
 }
 
 createUser::~createUser()

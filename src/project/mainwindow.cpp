@@ -7,6 +7,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Login");
     windowUserCreate = new createUser;
     connect(windowUserCreate, &createUser::loginWindow, this, &MainWindow::show);
 }
