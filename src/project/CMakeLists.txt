@@ -23,6 +23,9 @@ set(PROJECT_SOURCES
         createuser.cpp
         createuser.h
         createuser.ui
+        mainselects.cpp
+        mainselects.h
+        mainselects.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

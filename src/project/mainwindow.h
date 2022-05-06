@@ -6,6 +6,7 @@
 #include <QSqlTableModel>
 #include <QSqlQuery>
 #include <createuser.h>
+#include <mainselects.h>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -26,6 +27,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     createUser *windowUserCreate;
+    mainSelects *windowMainSelects;
     int user_id;
 
 private:

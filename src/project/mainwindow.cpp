@@ -54,7 +54,6 @@ void MainWindow::on_pushButton_clicked()
     user_id = query.value(0).toInt();
     qDebug() << user_id << " авторизовался.";
     //Здесь произошла авторизация
-
     query.prepare("SELECT position FROM worker WHERE id = " + QString::number(user_id));
     if (!query.exec()) {
         qDebug() << "Ошибка выполнения запроса.";
@@ -65,6 +64,8 @@ void MainWindow::on_pushButton_clicked()
     query.first();
     QString position = query.value(0).toString();
     qDebug() << position;
+    windowMainSelects = new mainSelects(position, user_id);
+    windowMainSelects->show();
     this->close();
     db.close();
 }
