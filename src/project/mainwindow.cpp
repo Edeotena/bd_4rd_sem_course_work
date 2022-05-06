@@ -31,7 +31,7 @@ void MainWindow::on_pushButton_clicked()
     }
 
     QSqlQuery query;
-    query.prepare("SELECT id_worker, access FROM qt_user WHERE login = '" + login + "' AND password = '" + pass + "'");
+    query.prepare("SELECT id, access FROM qt_user WHERE login = '" + login + "' AND password = '" + pass + "'");
     if (!query.exec()) {
         qDebug() << "Ошибка выполнения запроса.";
         QMessageBox::warning(this, "Ошибка!", "Сервер не смог выполнить поиск!");

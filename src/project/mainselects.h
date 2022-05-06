@@ -2,6 +2,7 @@
 #define MAINSELECTS_H
 
 #include <QDialog>
+#include <userprofile.h>
 
 namespace Ui {
 class mainSelects;
@@ -15,8 +16,12 @@ public:
     explicit mainSelects(QString position, int user_id, QWidget *parent = nullptr);
     ~mainSelects();
 
+private slots:
+    void on_profileButton_clicked();
+
 private:
     Ui::mainSelects *ui;
+    userProfile *windowUserProfile;
     QString position;
     int user_id;
 };

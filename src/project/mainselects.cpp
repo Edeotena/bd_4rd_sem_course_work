@@ -15,3 +15,11 @@ mainSelects::~mainSelects()
 {
     delete ui;
 }
+
+void mainSelects::on_profileButton_clicked()
+{
+    windowUserProfile = new userProfile(position, user_id);
+    this->close();
+    windowUserProfile->show();
+}
+

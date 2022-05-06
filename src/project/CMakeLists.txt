@@ -26,6 +26,9 @@ set(PROJECT_SOURCES
         mainselects.cpp
         mainselects.h
         mainselects.ui
+        userprofile.cpp
+        userprofile.h
+        userprofile.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
