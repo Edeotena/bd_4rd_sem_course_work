@@ -43,6 +43,7 @@ void createUser::on_pushButton_clicked()
     if (!query.exec()) {
         qDebug() << "Ошибка выполнения запроса.";
         QMessageBox::warning(this, "Ошибка!", "Сервер не смог выполнить поиск!");
+        db.close();
         return;
     }
 
@@ -56,6 +57,7 @@ void createUser::on_pushButton_clicked()
     if (!query.exec()) {
         qDebug() << "Ошибка добавления записи.";
         QMessageBox::warning(this, "Ошибка!", "Выберите другой логин!");
+        db.close();
         return;
     }
 

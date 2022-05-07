@@ -35,12 +35,14 @@ void MainWindow::on_pushButton_clicked()
     if (!query.exec()) {
         qDebug() << "Ошибка выполнения запроса.";
         QMessageBox::warning(this, "Ошибка!", "Сервер не смог выполнить поиск!");
+        db.close();
         return;
     }
 
     if (query.size() == 0) {
         qDebug() << "Пользователь не найден.";
         QMessageBox::warning(this, "Ошибка!", "Неправильный логин или пароль!");
+        db.close();
         return;
     }
 
@@ -48,6 +50,7 @@ void MainWindow::on_pushButton_clicked()
     if (query.value(1).toString() != "yes") {
         qDebug() << "Пользователь еще не принят.";
         QMessageBox::warning(this, "Ошибка!", "Вы еще не получили доступ к системе!");
+        db.close();
         return;
     }
 
@@ -58,6 +61,7 @@ void MainWindow::on_pushButton_clicked()
     if (!query.exec()) {
         qDebug() << "Ошибка выполнения запроса.";
         QMessageBox::warning(this, "Ошибка!", "Сервер не смог выполнить поиск!");
+        db.close();
         return;
     }
 

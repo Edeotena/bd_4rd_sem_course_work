@@ -23,12 +23,14 @@ userProfile::userProfile(QString position, int user_id, QWidget *parent) :
     if (!query.exec()) {
         qDebug() << "Ошибка выполнения запроса.";
         QMessageBox::warning(this, "Ошибка!", "Сервер не смог выполнить поиск!");
+        db.close();
         return;
     }
 
     if (query.size() == 0) {
         qDebug() << "Пользователь не найден.";
         QMessageBox::warning(this, "Ошибка!", "Пользователя больше нет в БД!");
+        db.close();
         return;
     }
 
@@ -39,12 +41,14 @@ userProfile::userProfile(QString position, int user_id, QWidget *parent) :
     if (!query.exec()) {
         qDebug() << "Ошибка выполнения запроса.";
         QMessageBox::warning(this, "Ошибка!", "Сервер не смог выполнить поиск!");
+        db.close();
         return;
     }
 
     if (query.size() == 0) {
         qDebug() << "Пользователь не найден.";
         QMessageBox::warning(this, "Ошибка!", "Пользователя больше нет в БД!");
+        db.close();
         return;
     }
 
