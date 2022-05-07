@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>613</width>
-    <height>463</height>
+    <width>602</width>
+    <height>220</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,15 +16,90 @@
   <widget class="QPushButton" name="profileButton">
    <property name="geometry">
     <rect>
-     <x>470</x>
+     <x>440</x>
      <y>20</y>
-     <width>131</width>
+     <width>111</width>
      <height>41</height>
     </rect>
    </property>
    <property name="text">
     <string>Ваш профиль</string>
    </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>30</y>
+     <width>371</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Некоторые функции доступны не всем сотрудникам!</string>
+   </property>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>60</x>
+     <y>90</y>
+     <width>473</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout">
+      <item>
+       <widget class="QPushButton" name="profileButton_2">
+        <property name="text">
+         <string>Просмотр заказов</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="profileButton_3">
+        <property name="text">
+         <string>Просмотр станций</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="profileButton_6">
+        <property name="text">
+         <string>Просмотр заказчиков</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+    <item>
+     <layout class="QHBoxLayout" name="horizontalLayout_2">
+      <item>
+       <widget class="QPushButton" name="profileButton_4">
+        <property name="text">
+         <string>Просмотр вагонов</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="profileButton_5">
+        <property name="text">
+         <string>Просмотр поездов</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QPushButton" name="profileButton_7">
+        <property name="text">
+         <string>Просмотр сотрудников</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </item>
+   </layout>
   </widget>
  </widget>
  <resources/>
