@@ -29,6 +29,9 @@ set(PROJECT_SOURCES
         userprofile.cpp
         userprofile.h
         userprofile.ui
+        selectorders.cpp
+        selectorders.h
+        selectorders.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

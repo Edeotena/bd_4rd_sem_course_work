@@ -1,5 +1,6 @@
 #include "mainselects.h"
 #include "ui_mainselects.h"
+#include "selectorders.h"
 
 mainSelects::mainSelects(QString position, int user_id, QWidget *parent) :
     position(position),
@@ -21,5 +22,13 @@ void mainSelects::on_profileButton_clicked()
     windowUserProfile = new userProfile(position, user_id);
     this->close();
     windowUserProfile->show();
+}
+
+
+void mainSelects::on_button_orders_clicked()
+{
+    selectOrders *windowSelectOrders = new selectOrders(position, user_id);
+    this->close();
+    windowSelectOrders->show();
 }
 
