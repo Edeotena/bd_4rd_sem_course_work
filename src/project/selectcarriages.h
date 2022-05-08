@@ -16,7 +16,14 @@ class selectCarriages : public QDialog
 
 public:
     explicit selectCarriages(QString position, int user_id, QWidget *parent = nullptr);
+    void setTable(QString position, int size);
+    QString getValue(QString input);
     ~selectCarriages();
+
+private slots:
+    void on_pushButton_2_pressed();
+
+    void on_pushButton_pressed();
 
 private:
     Ui::selectCarriages *ui;

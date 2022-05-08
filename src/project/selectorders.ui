@@ -86,7 +86,7 @@
    </property>
    <property name="text">
     <string>Если Вы не введете поле, то оно автоматически
-будет принято за любое значение</string>
+будет принято за любое доступное Вам</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_5">

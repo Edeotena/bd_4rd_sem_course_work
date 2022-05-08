@@ -38,7 +38,7 @@ void selectOrders::setTable(QString position, int size) {
     ui->tableWidget->setColumnCount(5);
     ui->tableWidget->setHorizontalHeaderLabels(QStringList() << "Код заказа" << "Код вагона" << "Название груза" << "Вес груза" << "Описание груза");
     ui->tableWidget->setRowCount(size);
-}
+    }
 }
 
 QString getValue(QString input) {
