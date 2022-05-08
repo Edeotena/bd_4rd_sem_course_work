@@ -8,6 +8,7 @@ selectOrders::selectOrders(QString position, int user_id, QWidget *parent) :
     ui(new Ui::selectOrders)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Select orders");
 }
 
 selectOrders::~selectOrders()
