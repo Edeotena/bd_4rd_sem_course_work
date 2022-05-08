@@ -63,6 +63,32 @@ void selectOrders::on_pushButton_clicked()
     QString select;
     int size;
 
+    QSqlDatabase db1 = get_db();
+    if (!db1.open()) {
+        QMessageBox::warning(this, "Ошибка!", "Не удалось открыть базу данных!");
+        return;
+    }
+
+    QSqlQuery query1;
+    query1.prepare("SELECT id_worker FROM qt_user WHERE id = '" + QString::number(user_id) + "'");
+    if (!query1.exec()) {
+        qDebug() << "Ошибка выполнения запроса.";
+        QMessageBox::warning(this, "Ошибка!", "Сервер не смог выполнить поиск!");
+        db1.close();
+        return;
+    }
+
+    if (query1.size() == 0) {
+        qDebug() << "Пользователь не найден.";
+        QMessageBox::warning(this, "Ошибка!", "Пользователя больше нет в БД!");
+        db1.close();
+        return;
+    }
+
+    query1.first();
+    int worker_id = query1.value(0).toInt();
+    db1.close();
+
     if (driver_id == "bad input" || station_to == "bad input" || station_from == "bad input" || company == "bad input") {
         QMessageBox::warning(this, "Ошибка!", "Вводимые поля должны быть натуральными числами.");
         ui->lineEdit->clear();
@@ -102,7 +128,7 @@ void selectOrders::on_pushButton_clicked()
         size = 11;
 
     } else if (position[0] == 'd') {
-        select = "SELECT o.id, o.railway_carriage, w.full_name, s1.settlement, s2.settlement, o.cargo_name, o.cargo_weight, o.cargo_description FROM cargo_order o, worker w, station s1, station s2 WHERE o.driver = w.id AND o.start_station = s1.id AND o.end_station = s2.id AND o.driver = " + QString::number(user_id);
+        select = "SELECT o.id, o.railway_carriage, w.full_name, s1.settlement, s2.settlement, o.cargo_name, o.cargo_weight, o.cargo_description FROM cargo_order o, worker w, station s1, station s2 WHERE o.driver = w.id AND o.start_station = s1.id AND o.end_station = s2.id AND o.driver = " + QString::number(worker_id);
         if (station_to != "" || station_from != "") {
             select += " AND ";
         }
@@ -119,7 +145,7 @@ void selectOrders::on_pushButton_clicked()
         size = 8;
 
     } else if (position[0] == 'l') {
-        select = "SELECT DISTINCT o.id, o.railway_carriage, o.cargo_name, o.cargo_weight, o.cargo_description FROM cargo_order o, loading_brigade l WHERE l.worker = " + QString::number(user_id) + " AND l.cargo_order = o.id ORDER BY o.id";
+        select = "SELECT DISTINCT o.id, o.railway_carriage, o.cargo_name, o.cargo_weight, o.cargo_description FROM cargo_order o, loading_brigade l WHERE l.worker = " + QString::number(worker_id) + " AND l.cargo_order = o.id ORDER BY o.id";
         size = 5;
     }
 
