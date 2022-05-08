@@ -56,22 +56,24 @@ QString getValue(QString input) {
 
 void selectOrders::on_pushButton_clicked()
 {
+    QString driver_id = getValue(ui->lineEdit->text());
+    QString station_to = getValue(ui->lineEdit_2->text());
+    QString station_from = getValue(ui->lineEdit_3->text());
+    QString company = getValue(ui->lineEdit_7->text());
+    QString select;
+    int size;
+
+    if (driver_id == "bad input" || station_to == "bad input" || station_from == "bad input" || company == "bad input") {
+        QMessageBox::warning(this, "Ошибка!", "Вводимые поля должны быть натуральными числами.");
+        ui->lineEdit->clear();
+        ui->lineEdit_2->clear();
+        ui->lineEdit_3->clear();
+        ui->lineEdit_7->clear();
+        return;
+    }
 
     if (position == "admin") {
-        QString driver_id = getValue(ui->lineEdit->text());
-        QString station_to = getValue(ui->lineEdit_2->text());
-        QString station_from = getValue(ui->lineEdit_3->text());
-        QString company = getValue(ui->lineEdit_7->text());
-
-        if (driver_id == "bad input" || station_to == "bad input" || station_from == "bad input" || company == "bad input") {
-            QMessageBox::warning(this, "Ошибка!", "Вводимые поля должны быть натуральными числами.");
-            ui->lineEdit->clear();
-            ui->lineEdit_2->clear();
-            ui->lineEdit_3->clear();
-            ui->lineEdit_7->clear();
-            return;
-        }
-        QString select = "SELECT o.id, o.railway_carriage, w.full_name, s1.settlement, s2.settlement, o.price, o.cargo_name, o.cargo_weight, o.cargo_description, o.order_date, c.name FROM cargo_order o, worker w, station s1, station s2, customer_company c WHERE o.driver = w.id AND o.start_station = s1.id AND o.end_station = s2.id AND o.customer_company   = c.id";
+        select = "SELECT o.id, o.railway_carriage, w.full_name, s1.settlement, s2.settlement, o.price, o.cargo_name, o.cargo_weight, o.cargo_description, o.order_date, c.name FROM cargo_order o, worker w, station s1, station s2, customer_company c WHERE o.driver = w.id AND o.start_station = s1.id AND o.end_station = s2.id AND o.customer_company   = c.id";
         if (driver_id != "" || station_to != "" || station_from != "" || company != "") {
             select += " AND ";
         }
@@ -97,41 +99,10 @@ void selectOrders::on_pushButton_clicked()
             select += "o.customer_company" + company;
         }
         select += " ORDER BY o.id";
-        qDebug() << select;
+        size = 11;
 
-        QSqlDatabase db = get_db();
-        if (!db.open()) {
-            QMessageBox::warning(this, "Ошибка!", "Не удалось открыть базу данных!");
-            return;
-        }
-
-        QSqlQuery query;
-        query.prepare(select);
-        if (!query.exec()) {
-            qDebug() << "Ошибка выполнения запроса.";
-            QMessageBox::warning(this, "Ошибка!", "Сервер не смог выполнить поиск!");
-            db.close();
-            return;
-        }
-
-        ui->label_7->setText(QString::number(query.size()));
-        setTable(position, query.size());
-
-        int i = 0;
-        while(query.next()) {
-            for (int j = 0; j < 11; ++j) {
-                ui->tableWidget->setItem(i, j, new QTableWidgetItem(query.value(j).toString()));
-            }
-            ++i;
-        }
-        ui->tableWidget->verticalHeader()->hide();
-        ui->tableWidget->resizeColumnsToContents();
-        db.close();
     } else if (position[0] == 'd') {
-        QString station_to = getValue(ui->lineEdit_2->text());
-        QString station_from = getValue(ui->lineEdit_3->text());
-
-        QString select = "SELECT o.id, o.railway_carriage, w.full_name, s1.settlement, s2.settlement, o.cargo_name, o.cargo_weight, o.cargo_description FROM cargo_order o, worker w, station s1, station s2 WHERE o.driver = w.id AND o.start_station = s1.id AND o.end_station = s2.id AND o.driver = " + QString::number(user_id);
+        select = "SELECT o.id, o.railway_carriage, w.full_name, s1.settlement, s2.settlement, o.cargo_name, o.cargo_weight, o.cargo_description FROM cargo_order o, worker w, station s1, station s2 WHERE o.driver = w.id AND o.start_station = s1.id AND o.end_station = s2.id AND o.driver = " + QString::number(user_id);
         if (station_to != "" || station_from != "") {
             select += " AND ";
         }
@@ -145,68 +116,41 @@ void selectOrders::on_pushButton_clicked()
             select += "o.end_station" + station_from;
         }
         select += " ORDER BY o.id";
-        qDebug() << select;
-        QSqlDatabase db = get_db();
-        if (!db.open()) {
-            QMessageBox::warning(this, "Ошибка!", "Не удалось открыть базу данных!");
-            return;
-        }
+        size = 8;
 
-        QSqlQuery query;
-        query.prepare(select);
-        if (!query.exec()) {
-            qDebug() << "Ошибка выполнения запроса.";
-            QMessageBox::warning(this, "Ошибка!", "Сервер не смог выполнить поиск!");
-            db.close();
-            return;
-        }
-
-        ui->label_7->setText(QString::number(query.size()));
-        setTable(position, query.size());
-
-        int i = 0;
-        while(query.next()) {
-            for (int j = 0; j < 8; ++j) {
-                ui->tableWidget->setItem(i, j, new QTableWidgetItem(query.value(j).toString()));
-            }
-            ++i;
-        }
-        ui->tableWidget->verticalHeader()->hide();
-        ui->tableWidget->resizeColumnsToContents();
-        db.close();
     } else if (position[0] == 'l') {
-
-        QString select = "SELECT DISTINCT  o.id, o.railway_carriage, o.cargo_name, o.cargo_weight, o.cargo_description FROM cargo_order o, loading_brigade l WHERE l.worker = " + QString::number(user_id) + " AND l.cargo_order = o.id ORDER BY o.id";
-
-        qDebug() << select;
-        QSqlDatabase db = get_db();
-        if (!db.open()) {
-            QMessageBox::warning(this, "Ошибка!", "Не удалось открыть базу данных!");
-            return;
-        }
-
-        QSqlQuery query;
-        query.prepare(select);
-        if (!query.exec()) {
-            qDebug() << "Ошибка выполнения запроса.";
-            QMessageBox::warning(this, "Ошибка!", "Сервер не смог выполнить поиск!");
-            db.close();
-            return;
-        }
-
-        ui->label_7->setText(QString::number(query.size()));
-        setTable(position, query.size());
-
-        int i = 0;
-        while(query.next()) {
-            for (int j = 0; j < 5; ++j) {
-                ui->tableWidget->setItem(i, j, new QTableWidgetItem(query.value(j).toString()));
-            }
-            ++i;
-        }
-        ui->tableWidget->verticalHeader()->hide();
-        ui->tableWidget->resizeColumnsToContents();
-        db.close();
+        select = "SELECT DISTINCT o.id, o.railway_carriage, o.cargo_name, o.cargo_weight, o.cargo_description FROM cargo_order o, loading_brigade l WHERE l.worker = " + QString::number(user_id) + " AND l.cargo_order = o.id ORDER BY o.id";
+        size = 5;
     }
+
+    QSqlDatabase db = get_db();
+    if (!db.open()) {
+        QMessageBox::warning(this, "Ошибка!", "Не удалось открыть базу данных!");
+        return;
+    }
+
+    QSqlQuery query;
+    query.prepare(select);
+    if (!query.exec()) {
+        qDebug() << "Ошибка выполнения запроса.";
+        QMessageBox::warning(this, "Ошибка!", "Сервер не смог выполнить поиск!");
+        db.close();
+        return;
+    }
+
+
+    ui->label_7->setText(QString::number(query.size()));
+    setTable(position, query.size());
+
+    int i = 0;
+    while(query.next()) {
+        for (int j = 0; j < size; ++j) {
+            ui->tableWidget->setItem(i, j, new QTableWidgetItem(query.value(j).toString()));
+        }
+        ++i;
+    }
+    ui->tableWidget->verticalHeader()->hide();
+    ui->tableWidget->resizeColumnsToContents();
+    db.close();
 }
 
