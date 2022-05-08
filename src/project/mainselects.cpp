@@ -1,6 +1,7 @@
 #include "mainselects.h"
 #include "ui_mainselects.h"
 #include "selectorders.h"
+#include "selectcarriages.h"
 
 mainSelects::mainSelects(QString position, int user_id, QWidget *parent) :
     position(position),
@@ -30,5 +31,13 @@ void mainSelects::on_button_orders_clicked()
     selectOrders *windowSelectOrders = new selectOrders(position, user_id);
     this->close();
     windowSelectOrders->show();
+}
+
+
+void mainSelects::on_button_carriages_clicked()
+{
+    selectCarriages *windowSelectCarriages = new selectCarriages(position, user_id);
+    this->close();
+    windowSelectCarriages->show();
 }
 

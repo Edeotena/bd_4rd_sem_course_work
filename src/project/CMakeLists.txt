@@ -32,6 +32,9 @@ set(PROJECT_SOURCES
         selectorders.cpp
         selectorders.h
         selectorders.ui
+        selectcarriages.cpp
+        selectcarriages.h
+        selectcarriages.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
