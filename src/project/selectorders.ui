@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>871</width>
-    <height>393</height>
+    <width>915</width>
+    <height>438</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -16,9 +16,9 @@
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
-     <x>380</x>
+     <x>400</x>
      <y>30</y>
-     <width>471</width>
+     <width>501</width>
      <height>331</height>
     </rect>
    </property>
@@ -49,13 +49,13 @@
     <string>Назад</string>
    </property>
   </widget>
-  <widget class="QWidget" name="">
+  <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
     <rect>
      <x>10</x>
      <y>31</y>
-     <width>351</width>
-     <height>273</height>
+     <width>378</width>
+     <height>281</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -78,7 +78,7 @@
       <item>
        <widget class="QLabel" name="label_3">
         <property name="text">
-         <string>Если вы не админ, эта функция Вам недоступна</string>
+         <string>Если вы не админ, строка выше Вам недоступна</string>
         </property>
        </widget>
       </item>
@@ -113,7 +113,7 @@
       <item>
        <widget class="QLabel" name="label_5">
         <property name="text">
-         <string>Если вы погрузчик, эти функции Вам недоступны</string>
+         <string>Если вы погрузчик, две строки выше Вам недоступны</string>
         </property>
        </widget>
       </item>
@@ -136,15 +136,41 @@
     <item>
      <widget class="QLabel" name="label_12">
       <property name="text">
-       <string>Если вы не админ, эта функция Вам недоступна</string>
+       <string>Если вы не админ, строка выше Вам недоступна</string>
       </property>
      </widget>
     </item>
     <item>
      <widget class="QLabel" name="label_13">
       <property name="text">
-       <string>Если вы не введете поле, то оно автоматически
+       <string>Если Вы не введете поле, то оно автоматически
 будет принято за любое значение</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QWidget" name="">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>380</y>
+     <width>261</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <layout class="QHBoxLayout" name="horizontalLayout_4">
+    <item>
+     <widget class="QLabel" name="label_6">
+      <property name="text">
+       <string>Найдено записей:</string>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <widget class="QLabel" name="label_7">
+      <property name="text">
+       <string/>
       </property>
      </widget>
     </item>
