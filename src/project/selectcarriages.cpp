@@ -97,7 +97,7 @@ void selectCarriages::on_pushButton_pressed()
     }
 
     if (position == "admin") {
-        select = "SELECT c.id, l.id, c.type, c.maintenance_date, o.cargo_name, o.cargo_weight FROM cargo_order o, locomotive l, railway_carriage c, composition_of_carriages cc  WHERE c.id = cc.railway_carriage AND cc.locomotive = l.id AND o.railway_carriage = c.id";
+        select = "SELECT DISTINCT c.id, l.id, c.type, c.maintenance_date, o.cargo_name, o.cargo_weight FROM cargo_order o, locomotive l, railway_carriage c, composition_of_carriages cc  WHERE c.id = cc.railway_carriage AND cc.locomotive = l.id AND o.railway_carriage = c.id";
         if (id_carriage != "" || id_locomotive != "" || id_order != "") {
             select += " AND ";
         }
@@ -120,7 +120,7 @@ void selectCarriages::on_pushButton_pressed()
         size = 6;
 
     } else if (position[0] == 'd') {
-        select = "SELECT c.id, l.id, c.type, o.cargo_name, o.cargo_weight FROM cargo_order o, locomotive l, railway_carriage c, composition_of_carriages cc  WHERE c.id = cc.railway_carriage AND cc.locomotive = l.id AND o.railway_carriage = c.id AND o.driver = " + QString::number(worker_id);
+        select = "SELECT DISTINCT c.id, l.id, c.type, o.cargo_name, o.cargo_weight FROM cargo_order o, locomotive l, railway_carriage c, composition_of_carriages cc  WHERE c.id = cc.railway_carriage AND cc.locomotive = l.id AND o.railway_carriage = c.id AND o.driver = " + QString::number(worker_id);
         if (id_carriage != "" || id_locomotive != "" || id_order != "") {
             select += " AND ";
         }
@@ -143,7 +143,7 @@ void selectCarriages::on_pushButton_pressed()
         size = 5;
 
     } else if (position[0] == 'l') {
-        select = "SELECT c.id, c.type, o.cargo_name, o.cargo_weight FROM cargo_order o, locomotive l, railway_carriage c, composition_of_carriages cc, loading_brigade lb WHERE c.id = cc.railway_carriage AND cc.locomotive = l.id AND o.railway_carriage = c.id AND lb.worker = " + QString::number(worker_id) + " AND lb.cargo_order = o.id";
+        select = "SELECT DISTINCT c.id, c.type, o.cargo_name, o.cargo_weight FROM cargo_order o, locomotive l, railway_carriage c, composition_of_carriages cc, loading_brigade lb WHERE c.id = cc.railway_carriage AND cc.locomotive = l.id AND o.railway_carriage = c.id AND lb.worker = " + QString::number(worker_id) + " AND lb.cargo_order = o.id";
         if (id_carriage != "" || id_locomotive != "" || id_order != "") {
             select += " AND ";
         }
