@@ -23,6 +23,8 @@ private slots:
 
     void on_button_carriages_clicked();
 
+    void on_button_stantions_pressed();
+
 private:
     Ui::mainSelects *ui;
     userProfile *windowUserProfile;

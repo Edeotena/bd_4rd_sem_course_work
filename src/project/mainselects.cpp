@@ -2,6 +2,8 @@
 #include "ui_mainselects.h"
 #include "selectorders.h"
 #include "selectcarriages.h"
+#include "selectstations.h"
+#include <QMessageBox>
 
 mainSelects::mainSelects(QString position, int user_id, QWidget *parent) :
     position(position),
@@ -39,5 +41,17 @@ void mainSelects::on_button_carriages_clicked()
     selectCarriages *windowSelectCarriages = new selectCarriages(position, user_id);
     this->close();
     windowSelectCarriages->show();
+}
+
+
+void mainSelects::on_button_stantions_pressed()
+{
+    if (position[0] == 'l') {
+        QMessageBox::warning(this, "Ошибка!", "У Вас нет доступа к поискам такого типа!");
+        return;
+    }
+    selectStations *windowSelectStations = new selectStations(position, user_id);
+    this->close();
+    windowSelectStations->show();
 }
 
