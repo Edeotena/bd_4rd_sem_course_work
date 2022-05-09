@@ -63,6 +63,15 @@ void selectOrders::on_pushButton_clicked()
     QString select;
     int size;
 
+    if (driver_id == "bad input" || station_to == "bad input" || station_from == "bad input" || company == "bad input") {
+        QMessageBox::warning(this, "Ошибка!", "Вводимые поля должны быть натуральными числами.");
+        ui->lineEdit->clear();
+        ui->lineEdit_2->clear();
+        ui->lineEdit_3->clear();
+        ui->lineEdit_7->clear();
+        return;
+    }
+
     QSqlDatabase db1 = get_db();
     if (!db1.open()) {
         QMessageBox::warning(this, "Ошибка!", "Не удалось открыть базу данных!");
@@ -88,15 +97,6 @@ void selectOrders::on_pushButton_clicked()
     query1.first();
     int worker_id = query1.value(0).toInt();
     db1.close();
-
-    if (driver_id == "bad input" || station_to == "bad input" || station_from == "bad input" || company == "bad input") {
-        QMessageBox::warning(this, "Ошибка!", "Вводимые поля должны быть натуральными числами.");
-        ui->lineEdit->clear();
-        ui->lineEdit_2->clear();
-        ui->lineEdit_3->clear();
-        ui->lineEdit_7->clear();
-        return;
-    }
 
     if (position == "admin") {
         select = "SELECT o.id, o.railway_carriage, w.full_name, s1.settlement, s2.settlement, o.price, o.cargo_name, o.cargo_weight, o.cargo_description, o.order_date, c.name FROM cargo_order o, worker w, station s1, station s2, customer_company c WHERE o.driver = w.id AND o.start_station = s1.id AND o.end_station = s2.id AND o.customer_company   = c.id";

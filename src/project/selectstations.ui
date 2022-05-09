@@ -57,7 +57,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>127</y>
+     <y>120</y>
      <width>401</width>
      <height>30</height>
     </rect>
@@ -66,7 +66,7 @@
     <item>
      <widget class="QLabel" name="label_5">
       <property name="text">
-       <string>Введите  ID станции назначения:</string>
+       <string>Введите  ID  станции прибытия:</string>
       </property>
      </widget>
     </item>
@@ -101,28 +101,6 @@
     <string>Поиск</string>
    </property>
   </widget>
-  <widget class="QWidget" name="layoutWidget_4">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>170</y>
-     <width>401</width>
-     <height>30</height>
-    </rect>
-   </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_9">
-    <item>
-     <widget class="QLabel" name="label_14">
-      <property name="text">
-       <string>Введите  ID перевозимого заказа:</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="lineEdit_8"/>
-    </item>
-   </layout>
-  </widget>
   <widget class="QTableWidget" name="tableWidget">
    <property name="geometry">
     <rect>
@@ -137,7 +115,7 @@
    <property name="geometry">
     <rect>
      <x>20</x>
-     <y>90</y>
+     <y>83</y>
      <width>401</width>
      <height>30</height>
     </rect>
@@ -146,7 +124,7 @@
     <item>
      <widget class="QLabel" name="label_16">
       <property name="text">
-       <string>Введите  ID станции отправления:</string>
+       <string>Введите  ID станции отправки:</string>
       </property>
      </widget>
     </item>
@@ -155,36 +133,38 @@
     </item>
    </layout>
   </widget>
+  <widget class="QLabel" name="label_10">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>60</y>
+     <width>394</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Если Вы не админ, поиск по машинисту Вам недоступен</string>
+   </property>
+  </widget>
   <widget class="QWidget" name="">
    <property name="geometry">
     <rect>
-     <x>19</x>
-     <y>26</y>
-     <width>396</width>
-     <height>59</height>
+     <x>22</x>
+     <y>22</y>
+     <width>401</width>
+     <height>30</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QHBoxLayout" name="horizontalLayout_8">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_8">
-      <item>
-       <widget class="QLabel" name="label_3">
-        <property name="text">
-         <string>Введите  ID машиниста:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="lineEdit_5"/>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <widget class="QLabel" name="label_12">
+     <widget class="QLabel" name="label_3">
       <property name="text">
-       <string>Если Вы не админ, поиск по машинисту Вам недоступен</string>
+       <string>Введите  ID машиниста:</string>
       </property>
      </widget>
+    </item>
+    <item>
+     <widget class="QLineEdit" name="lineEdit_5"/>
     </item>
    </layout>
   </widget>
