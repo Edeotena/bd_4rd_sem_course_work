@@ -4,6 +4,7 @@
 #include "selectcarriages.h"
 #include "selectstations.h"
 #include "selectlocomotives.h"
+#include "selectworkers.h"
 #include <QMessageBox>
 
 mainSelects::mainSelects(QString position, int user_id, QWidget *parent) :
@@ -66,5 +67,17 @@ void mainSelects::on_button_locomotives_pressed()
     selectLocomotives *windowSelectLocomotives = new selectLocomotives(position, user_id);
     this->close();
     windowSelectLocomotives->show();
+}
+
+
+void mainSelects::on_button_workers_pressed()
+{
+    if (position != "admin") {
+        QMessageBox::warning(this, "Ошибка!", "У Вас нет доступа к поискам такого типа!");
+        return;
+    }
+    selectWorkers *windowSelectWorkers = new selectWorkers(position, user_id);
+    this->close();
+    windowSelectWorkers->show();
 }
 

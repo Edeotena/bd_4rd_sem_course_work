@@ -1,34 +1,31 @@
-#ifndef SELECTSTATIONS_H
-#define SELECTSTATIONS_H
+#ifndef SELECTWORKERS_H
+#define SELECTWORKERS_H
 
 #include <QDialog>
 #include <QSqlDatabase>
 #include <QSqlTableModel>
 #include <QSqlQuery>
 
-
 namespace Ui {
-class selectStations;
+class selectWorkers;
 }
 
-class selectStations : public QDialog
+class selectWorkers : public QDialog
 {
     Q_OBJECT
 
 public:
-    explicit selectStations(QString position, int user_id, QWidget *parent = nullptr);
+    explicit selectWorkers(QString position, int user_id, QWidget *parent = nullptr);
     void setTable(QString position, int size);
     QString getValue(QString input);
-    ~selectStations();
+    ~selectWorkers();
 
 private slots:
     void on_pushButton_2_pressed();
-    void on_pushButton_pressed();
 
-private:
-    Ui::selectStations *ui;
-    QString position;
-    int user_id;
+    void on_pushButton_3_pressed();
+
+    void on_pushButton_pressed();
 
 private:
     QSqlDatabase get_db() {
@@ -40,6 +37,12 @@ private:
         database.setPassword("kudasmotrish");
         return database;
     }
+
+private:
+    Ui::selectWorkers *ui;
+    QString position;
+    int user_id;
+
 };
 
-#endif // SELECTSTATIONS_H
+#endif // SELECTWORKERS_H

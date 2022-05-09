@@ -41,6 +41,9 @@ set(PROJECT_SOURCES
         selectlocomotives.cpp
         selectlocomotives.h
         selectlocomotives.ui
+        selectworkers.cpp
+        selectworkers.h
+        selectworkers.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
