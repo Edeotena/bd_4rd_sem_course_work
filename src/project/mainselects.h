@@ -29,6 +29,8 @@ private slots:
 
     void on_button_workers_pressed();
 
+    void on_button_companies_pressed();
+
 private:
     Ui::mainSelects *ui;
     userProfile *windowUserProfile;

@@ -1,26 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>selectLocomotives</class>
- <widget class="QDialog" name="selectLocomotives">
+ <class>selectCustomers</class>
+ <widget class="QDialog" name="selectCustomers">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>945</width>
-    <height>398</height>
+    <width>953</width>
+    <height>392</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QTableWidget" name="tableWidget">
+  <widget class="QPushButton" name="pushButton">
    <property name="geometry">
     <rect>
-     <x>431</x>
-     <y>11</y>
-     <width>501</width>
-     <height>331</height>
+     <x>50</x>
+     <y>330</y>
+     <width>101</width>
+     <height>51</height>
     </rect>
+   </property>
+   <property name="text">
+    <string>Поиск</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_13">
@@ -35,6 +38,16 @@
    <property name="text">
     <string>Если Вы не введете поле, то оно автоматически
 будет принято за любое доступное Вам</string>
+   </property>
+  </widget>
+  <widget class="QTableWidget" name="tableWidget">
+   <property name="geometry">
+    <rect>
+     <x>431</x>
+     <y>11</y>
+     <width>501</width>
+     <height>331</height>
+    </rect>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton_2">
@@ -59,35 +72,22 @@
      <height>22</height>
     </rect>
    </property>
-   <layout class="QHBoxLayout" name="horizontalLayout_6">
+   <layout class="QHBoxLayout" name="horizontalLayout_15">
     <item>
-     <widget class="QLabel" name="label_8">
+     <widget class="QLabel" name="label_11">
       <property name="text">
        <string>Найдено записей:</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="label_9">
+     <widget class="QLabel" name="label_12">
       <property name="text">
        <string/>
       </property>
      </widget>
     </item>
    </layout>
-  </widget>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>50</x>
-     <y>330</y>
-     <width>101</width>
-     <height>51</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Поиск</string>
-   </property>
   </widget>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
@@ -98,60 +98,46 @@
      <height>143</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
+   <layout class="QVBoxLayout" name="verticalLayout_2">
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_8">
+     <layout class="QHBoxLayout" name="horizontalLayout_11">
       <item>
-       <widget class="QLabel" name="label_3">
+       <widget class="QLabel" name="label_4">
         <property name="text">
-         <string>Введите  ID поезда:</string>
+         <string>Введите  ID компании:</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_5"/>
+       <widget class="QLineEdit" name="lineEdit_8"/>
       </item>
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_10">
+     <layout class="QHBoxLayout" name="horizontalLayout_12">
       <item>
-       <widget class="QLabel" name="label_16">
+       <widget class="QLabel" name="label_17">
         <property name="text">
-         <string>Введите  ID водителя:</string>
+         <string>Введите  название компании:</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_6"/>
+       <widget class="QLineEdit" name="lineEdit_9"/>
       </item>
      </layout>
     </item>
     <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_7">
+     <layout class="QHBoxLayout" name="horizontalLayout_13">
       <item>
-       <widget class="QLabel" name="label_5">
+       <widget class="QLabel" name="label_7">
         <property name="text">
-         <string>Введите  ID заказа:</string>
+         <string>Введите ID заказа:</string>
         </property>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_4"/>
-      </item>
-     </layout>
-    </item>
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout_9">
-      <item>
-       <widget class="QLabel" name="label_6">
-        <property name="text">
-         <string>Введите  ID привязанного вагона:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QLineEdit" name="lineEdit_7"/>
+       <widget class="QLineEdit" name="lineEdit_10"/>
       </item>
      </layout>
     </item>

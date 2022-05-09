@@ -10,6 +10,7 @@ selectCarriages::selectCarriages(QString position, int user_id, QWidget *parent)
     ui(new Ui::selectCarriages)
 {
     ui->setupUi(this);
+    this->setWindowTitle("Select railway carriage");
 }
 
 selectCarriages::~selectCarriages()
