@@ -25,6 +25,8 @@ private slots:
 
     void on_button_stantions_pressed();
 
+    void on_button_locomotives_pressed();
+
 private:
     Ui::mainSelects *ui;
     userProfile *windowUserProfile;

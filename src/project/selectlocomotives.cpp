@@ -1,30 +1,37 @@
-#include "selectstations.h"
-#include "ui_selectstations.h"
-#include "mainselects.h"
+#include "selectlocomotives.h"
+#include "ui_selectlocomotives.h"
 #include <QMessageBox>
+#include "mainselects.h"
 
-selectStations::selectStations(QString position, int user_id, QWidget *parent) :
+selectLocomotives::selectLocomotives(QString position, int user_id, QWidget *parent) :
     position(position),
     user_id(user_id),
     QDialog(parent),
-    ui(new Ui::selectStations)
+    ui(new Ui::selectLocomotives)
 {
     ui->setupUi(this);
-    this->setWindowTitle("Select stations");
+    this->setWindowTitle("Select locomotives");
 }
 
-selectStations::~selectStations()
+selectLocomotives::~selectLocomotives()
 {
     delete ui;
 }
 
-void selectStations::setTable(QString position, int size) {
+void selectLocomotives::on_pushButton_2_pressed()
+{
+    mainSelects *newWindow = new mainSelects(position, user_id);
+    this->close();
+    newWindow->show();
+}
+
+void selectLocomotives::setTable(QString position, int size) {
     ui->tableWidget->setColumnCount(7);
-    ui->tableWidget->setHorizontalHeaderLabels(QStringList() << "Код станции" << "Населенный поселок" << "Широта" << "Долгота" << "Имя машиниста" << "Код заказа" << "Название груза");
+    ui->tableWidget->setHorizontalHeaderLabels(QStringList() << "Код поезда" << "Модель поезда" << "Дата тех. обслуживания" << "Имя водителя" << "Код вагона" << "Код заказа" << "Название груза");
     ui->tableWidget->setRowCount(size);
 }
 
-QString selectStations::getValue(QString input) {
+QString selectLocomotives::getValue(QString input) {
     QString temp= "";
     bool ok = false;
     input.toInt(&ok);
@@ -37,30 +44,24 @@ QString selectStations::getValue(QString input) {
     return temp;
 }
 
-void selectStations::on_pushButton_2_pressed()
+void selectLocomotives::on_pushButton_pressed()
 {
-    mainSelects *newWindow = new mainSelects(position, user_id);
-    this->close();
-    newWindow->show();
-}
+    QString locomotive_id = getValue(ui->lineEdit_5->text());
+    QString driver_id = getValue(ui->lineEdit_6->text());
+    QString order_id = getValue(ui->lineEdit_4->text());
+    QString carriage_id = getValue(ui->lineEdit_7->text());
 
-
-void selectStations::on_pushButton_pressed()
-{
-    QString driver_id = getValue(ui->lineEdit_5->text());
-    QString station_to = getValue(ui->lineEdit_4->text());
-    QString station_from = getValue(ui->lineEdit_6->text());
-
-    if (driver_id == "bad input" || station_to == "bad input" || station_from == "bad input") {
+    if (driver_id == "bad input" || locomotive_id == "bad input" || order_id == "bad input" || carriage_id == "bad input") {
         QMessageBox::warning(this, "Ошибка!", "Вводимые поля должны быть натуральными числами.");
         ui->lineEdit_4->clear();
         ui->lineEdit_5->clear();
         ui->lineEdit_6->clear();
+        ui->lineEdit_7->clear();
         return;
     }
 
-    QString select = "SELECT s.id, s.settlement, s.latitude, s.longitude, d.full_name, o.id, o.cargo_name FROM station s, cargo_order o, worker d WHERE (o.start_station = s.id OR o.end_station = s.id) AND o.driver = d.id";
-    if (position[0] == 'd') {
+    QString select = "SELECT l.id, l.type, l.maintenance_date, d.full_name, c.id, o.id, o.cargo_name FROM cargo_order o, locomotive l, railway_carriage c, worker d, composition_of_carriages cc WHERE cc.railway_carriage = c.id AND cc.locomotive = l.id AND o.railway_carriage = c.id AND d.id = o.driver";
+        if (position[0] == 'd') {
         QSqlDatabase db1 = get_db();
         if (!db1.open()) {
             QMessageBox::warning(this, "Ошибка!", "Не удалось открыть базу данных!");
@@ -89,14 +90,17 @@ void selectStations::on_pushButton_pressed()
         select += " AND d.id = " + QString::number(worker_id);
     }
 
+    if (locomotive_id != "") {
+        select += " AND l.id" + locomotive_id;
+    }
     if (driver_id != "") {
         select += " AND d.id" + driver_id;
     }
-    if (station_from != "") {
-        select += " AND o.start_station" + station_from;
+    if (order_id != "") {
+        select += " AND o.id" + order_id;
     }
-    if (station_to != "") {
-        select += " AND o.end_station" + station_to;
+    if (carriage_id != "") {
+        select += " AND c.id" + carriage_id;
     }
 
     QSqlDatabase db = get_db();

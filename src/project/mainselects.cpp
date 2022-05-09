@@ -3,6 +3,7 @@
 #include "selectorders.h"
 #include "selectcarriages.h"
 #include "selectstations.h"
+#include "selectlocomotives.h"
 #include <QMessageBox>
 
 mainSelects::mainSelects(QString position, int user_id, QWidget *parent) :
@@ -53,5 +54,17 @@ void mainSelects::on_button_stantions_pressed()
     selectStations *windowSelectStations = new selectStations(position, user_id);
     this->close();
     windowSelectStations->show();
+}
+
+
+void mainSelects::on_button_locomotives_pressed()
+{
+    if (position[0] == 'l') {
+        QMessageBox::warning(this, "Ошибка!", "У Вас нет доступа к поискам такого типа!");
+        return;
+    }
+    selectLocomotives *windowSelectLocomotives = new selectLocomotives(position, user_id);
+    this->close();
+    windowSelectLocomotives->show();
 }
 
