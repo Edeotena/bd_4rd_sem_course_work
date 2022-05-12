@@ -47,6 +47,9 @@ set(PROJECT_SOURCES
         selectcustomers.cpp
         selectcustomers.h
         selectcustomers.ui
+        redactdb.cpp
+        redactdb.h
+        redactdb.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)

@@ -31,6 +31,8 @@ private slots:
 
     void on_button_companies_pressed();
 
+    void on_pushButton_pressed();
+
 private:
     Ui::mainSelects *ui;
     userProfile *windowUserProfile;
