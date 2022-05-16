@@ -47,37 +47,6 @@ void redactDB::on_pushButton_2_pressed()
     newWindow->show();
 }
 
-
-void redactDB::on_pushButton_pressed()
-{
-    QString id = ui->lineEdit->text();
-    bool ok = false;
-    id.toInt(&ok);
-    if (!ok) {
-        QMessageBox::warning(this, "Ошибка!", "ID должен быть натуральным числом!");
-        ui->lineEdit->clear();
-        return;
-    }
-    QSqlDatabase db = get_db();
-    if (!db.open()) {
-        QMessageBox::warning(this, "Ошибка!", "Не удалось открыть базу данных!");
-        return;
-    }
-
-    QString table = ui->comboBox->currentText();
-    QSqlQuery query;
-    query.prepare("DELETE FROM " + table + " WHERE id = " + id);
-    if (!query.exec()) {
-        qDebug() << "Ошибка выполнения запроса.";
-        QMessageBox::warning(this, "Ошибка!", "Сервер не смог выполнить поиск!");
-        db.close();
-        return;
-    }
-    QMessageBox::information(this, "Успех!", "Запись успешно удалена");
-    return;
-}
-
-
 void redactDB::on_comboBox_textActivated(const QString &arg1)
 {
     QString table_name = ui->comboBox->currentText();
