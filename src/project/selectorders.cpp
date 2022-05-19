@@ -155,6 +155,7 @@ void selectOrders::on_pushButton_clicked()
         return;
     }
 
+    qDebug() << select;
     QSqlQuery query;
     query.prepare(select);
     if (!query.exec()) {

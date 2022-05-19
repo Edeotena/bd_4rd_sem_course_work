@@ -173,6 +173,7 @@ void selectCarriages::on_pushButton_pressed()
         return;
     }
 
+    qDebug() << select;
     QSqlQuery query;
     query.prepare(select);
     if (!query.exec()) {

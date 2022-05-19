@@ -100,7 +100,7 @@
    </property>
    <property name="text">
     <string>Если Вы не админ, то поиск будет ограничен
- Вашим допуском</string>
+доступными Вам записями</string>
    </property>
   </widget>
   <widget class="QWidget" name="">
