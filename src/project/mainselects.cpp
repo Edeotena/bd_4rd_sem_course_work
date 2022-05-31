@@ -7,6 +7,7 @@
 #include "selectworkers.h"
 #include "selectcustomers.h"
 #include "redactdb.h"
+#include "otchets.h"
 #include <QMessageBox>
 
 mainSelects::mainSelects(QString position, int user_id, QWidget *parent) :
@@ -105,5 +106,17 @@ void mainSelects::on_pushButton_pressed()
     redactDB *windowRedactDB = new redactDB(position, user_id);
     this->close();
     windowRedactDB->show();
+}
+
+
+void mainSelects::on_pushButton_2_pressed()
+{
+    if (position != "admin") {
+        QMessageBox::warning(this, "Ошибка!", "Изменение данных доступно только админам!");
+        return;
+    }
+    otchets *othcehtsWindow = new otchets;
+    this->close();
+    othcehtsWindow->show();
 }
 

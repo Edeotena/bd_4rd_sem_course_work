@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>602</width>
-    <height>220</height>
+    <height>250</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -44,69 +44,80 @@
     <rect>
      <x>60</x>
      <y>90</y>
-     <width>475</width>
-     <height>109</height>
+     <width>477</width>
+     <height>147</height>
     </rect>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_2">
+   <layout class="QVBoxLayout" name="verticalLayout_3">
     <item>
-     <layout class="QVBoxLayout" name="verticalLayout">
+     <layout class="QVBoxLayout" name="verticalLayout_2">
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout">
+       <layout class="QVBoxLayout" name="verticalLayout">
         <item>
-         <widget class="QPushButton" name="button_orders">
-          <property name="text">
-           <string>Просмотр заказов</string>
-          </property>
-         </widget>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QPushButton" name="button_orders">
+            <property name="text">
+             <string>Просмотр заказов</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="button_stantions">
+            <property name="text">
+             <string>Просмотр станций</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="button_companies">
+            <property name="text">
+             <string>Просмотр заказчиков</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
         <item>
-         <widget class="QPushButton" name="button_stantions">
-          <property name="text">
-           <string>Просмотр станций</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="button_companies">
-          <property name="text">
-           <string>Просмотр заказчиков</string>
-          </property>
-         </widget>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QPushButton" name="button_carriages">
+            <property name="text">
+             <string>Просмотр вагонов</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="button_locomotives">
+            <property name="text">
+             <string>Просмотр поездов</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="button_workers">
+            <property name="text">
+             <string>Просмотр сотрудников</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </item>
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_2">
-        <item>
-         <widget class="QPushButton" name="button_carriages">
-          <property name="text">
-           <string>Просмотр вагонов</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="button_locomotives">
-          <property name="text">
-           <string>Просмотр поездов</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="button_workers">
-          <property name="text">
-           <string>Просмотр сотрудников</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+       <widget class="QPushButton" name="pushButton">
+        <property name="text">
+         <string>Редактирование данных</string>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
     <item>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="pushButton_2">
       <property name="text">
-       <string>Редактирование данных</string>
+       <string>Формирование отчетов</string>
       </property>
      </widget>
     </item>

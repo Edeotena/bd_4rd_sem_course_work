@@ -50,6 +50,9 @@ set(PROJECT_SOURCES
         redactdb.cpp
         redactdb.h
         redactdb.ui
+        otchets.cpp
+        otchets.h
+        otchets.ui
 )
 
 if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
